@@ -13,8 +13,9 @@ const generateData = () => {
 
 	for (let i = 0; i < 100; i++) {
 		let data = {
+			"id": faker.datatype.uuid(),
 			"title": faker.address.cityName(),
-			"image": faker.image.city(),
+			"image": faker.image.city(640, 480, true),
 			"description": faker.lorem.paragraph(),
 			"price": faker.commerce.price(200, 5000, 2, "£")
 		};
@@ -26,9 +27,10 @@ const generateData = () => {
 			structure["recommendations"].push(data);
 		} else if (i % 2 == 0) {
 			structure["blogs"].push({
-				"title": faker.lorem.lines(5),
-				"descriptions": faker.lorem.paragraph(),
-				"image": faker.image.city()
+				"id": faker.datatype.uuid(),
+				"title": faker.lorem.lines(1),
+				"description": faker.lorem.paragraph(),
+				"image": faker.image.city(640, 480, true)
 			});
 		} else {
 			structure["popular"].push(data);
